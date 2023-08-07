@@ -7,7 +7,13 @@ import ast as ast
 window = tk.Tk()
 master_key = "twenty"
 
+'''
 
+Unused tkinter code is left in here as I was originally planning to use tkinter to server for my gui, I have decided to move on to using PySide in further development
+
+
+
+'''
 class AccountStorage:
     """
     
