@@ -5,21 +5,25 @@ import json as json
 import pathlib as pathlib
 import ast as ast
 window = tk.Tk()
-master_key = "twenty"
+master_key = ""
 
-'''
-
-Unused tkinter code is left in here as I was originally planning to use tkinter to server for my gui, I have decided to move on to using PySide in further development
-
-
-
-'''
 class AccountStorage:
     """
-    
-    Will contain all the entire practical coding of a password manager
-    
-    ask python discord about turning a string of a dictionary into a real dictionary, should solve all problems
+    Problems:
+        1. Encrypt password
+        2. Store Password with username and stie
+        3. Retrieve encrypted password
+        4. decrypt encrypted password
+        5. bundle the decrypted password, site and username together
+
+
+
+    Solutions
+        1. AES_SIV allows for deterministic hashes
+        2. Write site, username, and password into a text file as a json object(doing so allows me to keep all the information bundled as a dictionary which is neat with the site as a key)
+        3. read the file as a json object
+        4. Parse the json object into its 3 seperate parts, then run the encrypted password through the decryption function
+        5. break down the json object
     """
 
     def __init__(self, site: str, username: str, password=""):
@@ -64,44 +68,5 @@ class AccountStorage:
                     
                     return {log[0]:{user:cipher.decrypt_and_verify(ast.literal_eval(password),self.tag)}}
 
-        if i is None:
-            return
+        
 
-'''
-class Gui:
-    
-
-    def __init__():
-
-        t.tk()
-
-
-
-
-
-
-    def basic_layout():
-        main_message = tk.Label(
-
-            text="Shadow Dogger's Password Manager",
-            height=5,
-            width=30,
-            foreground="white",
-            background="black",
-
-        )
-
-        main_screen = tk.Label(
-
-        background="white",
-        height=10,
-        width=100
-    )
-
-        main_message.pack()
-        main_screen.pack()
-
-window.mainloop()
-
-
-'''
